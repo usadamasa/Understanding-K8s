@@ -12,7 +12,7 @@ az group create --name $RESOURCE_GROUP_NAME --location japaneast
 
 az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --sku Standard_LRS --encryption-services blob
 
-export ARM_ACCESS_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --query [0].value -o tsv)
+export ARM_ACCESS_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
 
 az storage container create --name ${CONTAINER_NAME_SHARED} --account-name $STORAGE_ACCOUNT_NAME --account-key $ARM_ACCESS_KEY
 az storage container create --name ${CONTAINER_NAME_CLUSTER_BLUE} --account-name $STORAGE_ACCOUNT_NAME --account-key $ARM_ACCESS_KEY
